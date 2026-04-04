@@ -63,6 +63,8 @@ void Error_Handler(void);
 #define Encoder1_1_GPIO_Port GPIOA
 #define Encoder1_2_Pin GPIO_PIN_1
 #define Encoder1_2_GPIO_Port GPIOA
+#define LeftForwardIR_Pin GPIO_PIN_3
+#define LeftForwardIR_GPIO_Port GPIOA
 #define Encoder2_1_Pin GPIO_PIN_6
 #define Encoder2_1_GPIO_Port GPIOA
 #define Encoder2_2_Pin GPIO_PIN_7
@@ -71,12 +73,20 @@ void Error_Handler(void);
 #define left_IR_GPIO_Port GPIOB
 #define leftDiagonal_IR_Pin GPIO_PIN_1
 #define leftDiagonal_IR_GPIO_Port GPIOB
+#define LeftIROUT_Pin GPIO_PIN_2
+#define LeftIROUT_GPIO_Port GPIOB
+#define rightDiagonal_OUT_Pin GPIO_PIN_10
+#define rightDiagonal_OUT_GPIO_Port GPIOB
 #define rightForward_IR_Pin GPIO_PIN_11
 #define rightForward_IR_GPIO_Port GPIOB
 #define rightDiagonal_IR_Pin GPIO_PIN_12
 #define rightDiagonal_IR_GPIO_Port GPIOB
+#define RightForwardlOUT_Pin GPIO_PIN_13
+#define RightForwardlOUT_GPIO_Port GPIOB
 #define right_IR_Pin GPIO_PIN_14
 #define right_IR_GPIO_Port GPIOB
+#define RightIROUT_Pin GPIO_PIN_15
+#define RightIROUT_GPIO_Port GPIOB
 #define PWMA_Pin GPIO_PIN_8
 #define PWMA_GPIO_Port GPIOA
 #define PWMB_Pin GPIO_PIN_9
@@ -85,12 +95,16 @@ void Error_Handler(void);
 #define IN1_GPIO_Port GPIOA
 #define IN2_Pin GPIO_PIN_11
 #define IN2_GPIO_Port GPIOA
-#define IN3_Pin GPIO_PIN_12
-#define IN3_GPIO_Port GPIOA
+#define LeftForwardIROUT_Pin GPIO_PIN_12
+#define LeftForwardIROUT_GPIO_Port GPIOA
 #define IN4_Pin GPIO_PIN_3
 #define IN4_GPIO_Port GPIOB
 #define STBY_Pin GPIO_PIN_4
 #define STBY_GPIO_Port GPIOB
+#define leftDiagonalOUT_Pin GPIO_PIN_5
+#define leftDiagonalOUT_GPIO_Port GPIOB
+#define LeftDiagonalIROUT_Pin GPIO_PIN_6
+#define LeftDiagonalIROUT_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
