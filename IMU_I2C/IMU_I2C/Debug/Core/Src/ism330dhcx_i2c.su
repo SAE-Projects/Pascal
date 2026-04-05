@@ -1,0 +1,13 @@
+../Core/Src/ism330dhcx_i2c.c:8:6:DWT_Delay	24	static
+../Core/Src/ism330dhcx_i2c.c:32:17:ISM330_WriteReg	40	static
+../Core/Src/ism330dhcx_i2c.c:43:17:ISM330_ReadReg	48	static
+../Core/Src/ism330dhcx_i2c.c:55:17:ISM330_ReadRegs	48	static
+../Core/Src/ism330dhcx_i2c.c:65:17:ISM330_ModifyReg	24	static
+../Core/Src/ism330dhcx_i2c.c:85:17:ISM330_Init	24	static
+../Core/Src/ism330dhcx_i2c.c:127:17:ISM330_SoftReset	32	static
+../Core/Src/ism330dhcx_i2c.c:155:17:ISM330_ReadRaw	32	static
+../Core/Src/ism330dhcx_i2c.c:175:17:ISM330_WaitAndRead	24	static
+../Core/Src/ism330dhcx_i2c.c:200:6:ISM330_ToPhysical	16	static
+../Core/Src/ism330dhcx_i2c.c:216:6:ISM330_LPF_Init	16	static
+../Core/Src/ism330dhcx_i2c.c:227:6:ISM330_LPF_Update	24	static
+../Core/Src/ism330dhcx_i2c.c:242:13:ISM330_StatusStr	16	static

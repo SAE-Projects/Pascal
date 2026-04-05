@@ -1,0 +1,9 @@
+../Core/Src/encoder.c:35:6:Encoder_Init	8	static
+../Core/Src/encoder.c:43:9:Encoder_GetLeft	4	static
+../Core/Src/encoder.c:48:9:Encoder_GetRight	4	static
+../Core/Src/encoder.c:53:7:Encoder_GetDistanceLeft	4	static
+../Core/Src/encoder.c:59:7:Encoder_GetDistanceRight	4	static
+../Core/Src/encoder.c:65:6:Encoder_ResetLeft	4	static
+../Core/Src/encoder.c:72:6:Encoder_ResetRight	4	static
+../Core/Src/encoder.c:79:6:Encoder_ResetBoth	4	static
+../Core/Src/encoder.c:89:6:Encoder_Update	16	static
