@@ -1,0 +1,17 @@
+../Core/Src/main.c:91:6:DWT_Init	4	static
+../Core/Src/main.c:98:10:DWT_GetMicros	4	static
+../Core/Src/main.c:108:5:main	8	static
+../Core/Src/main.c:342:6:SystemClock_Config	88	static
+../Core/Src/main.c:388:13:MX_I2C1_Init	8	static
+../Core/Src/main.c:436:13:MX_TIM1_Init	104	static
+../Core/Src/main.c:512:13:MX_TIM2_Init	56	static
+../Core/Src/main.c:561:13:MX_TIM3_Init	56	static
+../Core/Src/main.c:610:13:MX_USART2_UART_Init	8	static
+../Core/Src/main.c:658:13:MX_GPIO_Init	40	static
+../Core/Src/main.c:710:6:IMU_Init	16	static
+../Core/Src/main.c:731:6:IMU_Read	16	static
+../Core/Src/main.c:750:6:IMU_UpdateHeading	32	static
+../Core/Src/main.c:791:6:IMU_PrintDebug	104	static
+../Core/Src/main.c:807:5:_write	24	static
+../Core/Src/main.c:817:6:IMU_CalibrateGyro	64	static
+../Core/Src/main.c:851:6:Error_Handler	4	static,ignoring_inline_asm
