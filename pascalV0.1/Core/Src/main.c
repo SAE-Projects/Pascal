@@ -38,7 +38,7 @@ ADC_HandleTypeDef hadc1;
 /* USER CODE BEGIN PD */
 uint16_t adc_pb0;
 uint16_t adc_pb1;
-uint16_t adc_pa4;
+uint16_t adc_pa3;
 uint16_t adc_pb11;
 uint16_t adc_pb12;
 uint16_t adc_pb14;
@@ -136,7 +136,7 @@ int main(void)
 
 	  adc_pb0  = read_adc1_channel(ADC_CHANNEL_15);
 	  adc_pb1  = read_adc1_channel(ADC_CHANNEL_12);
-	  adc_pa4  = read_adc2_channel(ADC_CHANNEL_17);
+	  adc_pa3  = read_adc1_channel(ADC_CHANNEL_4);
 	  adc_pb11 = read_adc1_channel(ADC_CHANNEL_14);
 	  adc_pb12 = read_adc1_channel(ADC_CHANNEL_11);
 	  adc_pb14 = read_adc1_channel(ADC_CHANNEL_5);
@@ -146,7 +146,7 @@ int main(void)
 			  min,
 	          adc_pb0,
 	          adc_pb1,
-	          adc_pa4,
+	          adc_pa3,
 	          adc_pb11,
 	          adc_pb12,
 	          adc_pb14,
@@ -574,7 +574,7 @@ static void MX_USART2_UART_Init(void)
   huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   huart2.Init.ClockPrescaler = UART_PRESCALER_DIV1;
   huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
+  if (HAL_HalfDuplex_Init(&huart2) != HAL_OK)
   {
     Error_Handler();
   }

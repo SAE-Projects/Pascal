@@ -1,0 +1,10 @@
+../Core/Src/irSensor.c:37:13:DWT_Init	4	static
+../Core/Src/irSensor.c:43:13:DWT_Delay_us	24	static
+../Core/Src/irSensor.c:49:13:LED_Off	16	static
+../Core/Src/irSensor.c:53:13:LED_On	16	static
+../Core/Src/irSensor.c:57:17:Read_ADC	24	static
+../Core/Src/irSensor.c:68:6:IR_Init	24	static
+../Core/Src/irSensor.c:78:6:IR_Start	16	static
+../Core/Src/irSensor.c:82:6:IR_TimerCallback	24	static
+../Core/Src/irSensor.c:101:13:IR_GetReadings	32	static
+../Core/Src/irSensor.c:112:10:IR_GetSingle	16	static

@@ -1,0 +1,3 @@
+../Core/Src/utils.c:9:10:read_adc	1
+../Core/Src/utils.c:34:10:read_adc1_channel	1
+../Core/Src/utils.c:41:10:read_adc2_channel	1
