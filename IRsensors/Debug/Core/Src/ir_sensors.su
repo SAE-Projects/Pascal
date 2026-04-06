@@ -1,0 +1,7 @@
+../Core/Src/ir_sensors.c:35:13:delay_us	24	static,ignoring_inline_asm
+../Core/Src/ir_sensors.c:45:6:IR_Sequence_ISR	16	static
+../Core/Src/ir_sensors.c:76:6:IR_Reset_Calibration_Peaks	16	static
+../Core/Src/ir_sensors.c:82:6:IR_Set_Min_Baselines	24	static
+../Core/Src/ir_sensors.c:88:6:IR_Calibrate_Starting_Cell	48	static
+../Core/Src/ir_sensors.c:108:17:map_value	16	static
+../Core/Src/ir_sensors.c:114:6:IR_Apply_Calibration	8	static
