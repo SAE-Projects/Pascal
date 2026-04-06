@@ -1,0 +1,15 @@
+../Core/Src/main.c:87:5:main	1
+../Core/Src/main.c:170:6:SystemClock_Config	3
+../Core/Src/main.c:216:13:MX_I2C1_Init	4
+../Core/Src/main.c:264:13:MX_TIM1_Init	6
+../Core/Src/main.c:340:13:MX_TIM2_Init	3
+../Core/Src/main.c:389:13:MX_TIM3_Init	3
+../Core/Src/main.c:438:13:MX_USART2_UART_Init	5
+../Core/Src/main.c:486:13:MX_GPIO_Init	1
+../Core/Src/main.c:538:6:IMU_Init	3
+../Core/Src/main.c:558:6:IMU_Read	3
+../Core/Src/main.c:585:6:IMU_UpdateHeading	7
+../Core/Src/main.c:615:6:IMU_PrintDebug	2
+../Core/Src/main.c:631:5:_write	1
+../Core/Src/main.c:641:6:IMU_CalibrateGyro	2
+../Core/Src/main.c:675:6:Error_Handler	1
