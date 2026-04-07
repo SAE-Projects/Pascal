@@ -9,7 +9,7 @@ typedef struct {
 
 // ── Private variables ────────────────────────────────────────────────────────
 
-extern static ADC_HandleTypeDef *_hadc;
+static ADC_HandleTypeDef *_hadc;
 
 static IR_LED ir_leds[6] = {
     {GPIOB, GPIO_PIN_5},   // leftForward  → PB5
