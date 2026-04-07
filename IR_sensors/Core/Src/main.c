@@ -30,6 +30,10 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+typedef struct {
+	uint16_t adc;
+	uint16_t dist_mm;
+} CalibPoint;
 
 /* USER CODE END PTD */
 
@@ -40,6 +44,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+#define CALIB_SIZE (sizeof(calib)/sizeof(calib[0]))
 
 /* USER CODE END PM */
 
@@ -66,7 +71,15 @@ uint16_t adc_pb12;
 uint16_t adc_pb14;
 uint16_t min =0;
 uint16_t max =4096;
-IR_Readings readings;
+IR_Readings adc;
+IR_Readings ir_min = {4095,4095,4095,4095,4095,4095};
+IR_Readings ir_max = {0,0,0,0,0,0};
+IR_Readings adcNorm;
+CalibPoint calib[] = {
+		{}
+
+
+};
 
 /* USER CODE END PV */
 
@@ -80,12 +93,96 @@ static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM6_Init(void);
+uint16_t adc_to_mm(uint16_t adc);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint16_t adc_to_mm(uint16_t adc) {
+// Out of range checks
+	if (adc >= calib[0].adc) return calib[0].dist_mm;
+	if (adc <= calib[CALIB_SIZE-1].adc) return 999; // no wall
+
+	// Linear interpolation between points
+	for (int i = 0; i < CALIB_SIZE - 1; i++) {
+		if (adc <= calib[i].adc && adc >= calib[i+1].adc) {
+			float t = (float)(calib[i].adc - adc) /
+					  (float)(calib[i].adc - calib[i+1].adc);
+			return calib[i].dist_mm +
+				   (uint16_t)(t * (calib[i+1].dist_mm - calib[i].dist_mm));
+		}
+	}
+	return 999;
+}
+
+//static inline int min(int a, int b)
+//{
+//    return (a < b) ? a : b;
+//}
+//
+//static inline int max(int a, int b)
+//{
+//    return (a > b) ? a : b;
+//}
+
+void IR_UpdateMinMax(IR_Readings r)
+{
+    // LEFT FORWARD
+    if (r.left_fwd < ir_min.left_fwd)
+        ir_min.left_fwd = r.left_fwd;
+
+    if (r.left_fwd > ir_max.left_fwd)
+        ir_max.left_fwd = r.left_fwd;
+
+    // LEFT
+    if (r.left < ir_min.left)
+        ir_min.left = r.left;
+
+    if (r.left > ir_max.left)
+        ir_max.left = r.left;
+
+    // LEFT DIAGONAL
+    if (r.left_diag < ir_min.left_diag)
+        ir_min.left_diag = r.left_diag;
+
+    if (r.left_diag > ir_max.left_diag)
+        ir_max.left_diag = r.left_diag;
+
+    // RIGHT FORWARD
+    if (r.right_fwd < ir_min.right_fwd)
+        ir_min.right_fwd = r.right_fwd;
+
+    if (r.right_fwd > ir_max.right_fwd)
+        ir_max.right_fwd = r.right_fwd;
+
+    // RIGHT DIAGONAL
+    if (r.right_diag < ir_min.right_diag)
+        ir_min.right_diag = r.right_diag;
+
+    if (r.right_diag > ir_max.right_diag)
+        ir_max.right_diag = r.right_diag;
+
+    // RIGHT
+    if (r.right < ir_min.right)
+        ir_min.right = r.right;
+
+    if (r.right > ir_max.right)
+        ir_max.right = r.right;
+}
+
+IR_Readings irReadNormalized(IR_Readings raw, IR_Readings irmin, IR_Readings irmax){
+	IR_Readings adcNorm;
+	adcNorm.left = (raw.left - irmin.left)*4000/(irmax.left-irmin.left);
+	adcNorm.right = (raw.right - irmin.right)*4000/(irmax.right-irmin.right);
+	adcNorm.left_diag = (raw.left_diag - irmin.left_diag)*4000/(irmax.left_diag-irmin.left_diag);
+	adcNorm.left_fwd = (raw.left_fwd - irmin.left_fwd)*4000/(irmax.left_fwd-irmin.left_fwd);
+	adcNorm.right_diag = (raw.right_diag - irmin.right_diag)*4000/(irmax.right_diag-irmin.right_diag);
+	adcNorm.right_fwd = (raw.right_fwd - irmin.right_fwd)*4000/(irmax.right_fwd-irmin.right_fwd);
+
+	return adcNorm;
+}
 
 /* USER CODE END 0 */
 
@@ -97,6 +194,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+
 
   /* USER CODE END 1 */
 
@@ -126,6 +224,12 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
+  for (int i = 0; i < 1000; i++)
+  {
+      adc = IR_GetReadings();
+      IR_UpdateMinMax(adc);
+      HAL_Delay(2);  // small delay
+  }
 
   /* USER CODE END 2 */
 
@@ -133,18 +237,22 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		  readings = IR_GetReadings();
+	  adc = IR_GetReadings();
+	  adcNorm = irReadNormalized(adc, ir_min, ir_max);
+
+
+
 
 
 	  sprintf(buffer,
 			  "min:%4u LS:%4u LD:%4u LF:%4u RF:%4u RD:%4u RS:%4u max:%4u\r\n",
 			  min,
-			  readings.left,
-			  readings.left_diag,
-			  readings.left_fwd,
-			  readings.right,
-			  readings.right_diag,
-			  readings.right_fwd,
+			  adcNorm.left,
+			  adcNorm.left_diag,
+			  adcNorm.left_fwd,
+			  adcNorm.right,
+			  adcNorm.right_diag,
+			  adcNorm.right_fwd,
 			  max);
 
 	  HAL_UART_Transmit(&huart2,
