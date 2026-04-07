@@ -18,10 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stdio.h"
-#include "String.h"
-#include "stdlib.h"
 #include "irSensor.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "String.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -93,7 +94,6 @@ static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM6_Init(void);
-uint16_t adc_to_mm(uint16_t adc);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -223,6 +223,7 @@ int main(void)
   MX_TIM3_Init();
   MX_USART2_UART_Init();
   MX_TIM6_Init();
+  HAL_TIM_Base_Start_IT(&htim6);
   /* USER CODE BEGIN 2 */
   for (int i = 0; i < 1000; i++)
   {
@@ -729,11 +730,11 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LeftIROUT_Pin rightDiagonal_OUT_Pin RightForwardlOUT_Pin RightIROUT_Pin
-                           IN4_Pin STBY_Pin leftForwardIR_Pin LeftDiagonalIROUT_Pin */
+                           leftForwardIR_Pin LeftDiagonalIROUT_Pin */
   GPIO_InitStruct.Pin = LeftIROUT_Pin|rightDiagonal_OUT_Pin|RightForwardlOUT_Pin|RightIROUT_Pin
-                          |IN4_Pin|STBY_Pin|leftForwardIR_Pin|LeftDiagonalIROUT_Pin;
+                          |leftForwardIR_Pin|LeftDiagonalIROUT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
@@ -743,6 +744,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : IN4_Pin STBY_Pin */
+  GPIO_InitStruct.Pin = IN4_Pin|STBY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
