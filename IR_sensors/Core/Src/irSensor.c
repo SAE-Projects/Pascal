@@ -89,7 +89,7 @@ void IR_TimerCallback(TIM_HandleTypeDef *htim) {
 
     if (ir_step < 6) {
         LED_On(ir_step);
-        DWT_Delay_us(30);
+        DWT_Delay_us(70);
         ir_readings[ir_step] = Read_ADC(ir_step);
         ir_step++;
     } else {
