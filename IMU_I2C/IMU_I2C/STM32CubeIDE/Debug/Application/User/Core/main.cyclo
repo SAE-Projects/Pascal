@@ -1,0 +1,15 @@
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:87:5:main	1
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:169:6:SystemClock_Config	3
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:215:13:MX_I2C1_Init	4
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:263:13:MX_TIM1_Init	6
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:339:13:MX_TIM2_Init	3
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:388:13:MX_TIM3_Init	3
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:437:13:MX_USART2_UART_Init	5
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:485:13:MX_GPIO_Init	1
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:537:6:IMU_Init	3
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:557:6:IMU_Read	3
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:584:6:IMU_UpdateHeading	7
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:614:6:IMU_PrintDebug	2
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:630:5:_write	1
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:640:6:IMU_CalibrateGyro	2
+D:/Pc/Tools/stm32cube/Pascal/IMU_I2C/IMU_I2C/Core/Src/main.c:674:6:Error_Handler	1

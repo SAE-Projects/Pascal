@@ -66,8 +66,8 @@ all: main-build
 main-build: pascal_1.0.elf secondary-outputs
 
 # Tool invocations
-pascal_1.0.elf pascal_1.0.map: $(OBJS) $(USER_OBJS) D:\STM32\STM32\ FUN\MOTOR_MOVE\pascal_1.0\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "pascal_1.0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\STM32\STM32 FUN\MOTOR_MOVE\pascal_1.0\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pascal_1.0.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+pascal_1.0.elf pascal_1.0.map: $(OBJS) $(USER_OBJS) D:\Pc\Tools\stm32cube\Pascal\MOTOR_MOVE\pascal_1.0\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "pascal_1.0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Pc\Tools\stm32cube\Pascal\MOTOR_MOVE\pascal_1.0\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pascal_1.0.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

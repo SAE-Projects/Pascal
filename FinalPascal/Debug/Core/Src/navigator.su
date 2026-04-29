@@ -1,0 +1,5 @@
+../Core/Src/navigator.c:18:6:Navigator_Run_LeftWallFollow	40	static,ignoring_inline_asm
+../Core/Src/navigator.c:140:6:Navigator_Solve_Step	24	static,ignoring_inline_asm
+../Core/Src/navigator.c:237:6:Navigator_Auto_Calibrate	32	static,ignoring_inline_asm
+../Core/Src/navigator.c:290:6:Navigator_Manual_Calibrate	40	static
+../Core/Src/navigator.c:327:6:Navigator_Final_Run	32	static,ignoring_inline_asm

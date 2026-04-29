@@ -101,8 +101,8 @@ void Error_Handler(void);
 #define IN4_GPIO_Port GPIOB
 #define STBY_Pin GPIO_PIN_4
 #define STBY_GPIO_Port GPIOB
-#define leftForwardIR_Pin GPIO_PIN_5
-#define leftForwardIR_GPIO_Port GPIOB
+#define leftForwardIROUT_Pin GPIO_PIN_5
+#define leftForwardIROUT_GPIO_Port GPIOB
 #define LeftDiagonalIROUT_Pin GPIO_PIN_6
 #define LeftDiagonalIROUT_GPIO_Port GPIOB
 
