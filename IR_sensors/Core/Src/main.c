@@ -18,14 +18,14 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "irSensor.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "String.h"
-
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stdlib.h"
+#include "stdio.h"
+#include "String.h"
+#include "irSensor.h"
+
 
 /* USER CODE END Includes */
 
@@ -223,8 +223,8 @@ int main(void)
   MX_TIM3_Init();
   MX_USART2_UART_Init();
   MX_TIM6_Init();
-  HAL_TIM_Base_Start_IT(&htim6);
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim6);
   for (int i = 0; i < 1000; i++)
   {
       adc = IR_GetReadings();
@@ -647,6 +647,7 @@ static void MX_TIM6_Init(void)
   }
   /* USER CODE BEGIN TIM6_Init 2 */
 
+
   /* USER CODE END TIM6_Init 2 */
 
 }
@@ -718,7 +719,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LeftIROUT_Pin|rightDiagonal_OUT_Pin|RightForwardlOUT_Pin|RightIROUT_Pin
-                          |IN4_Pin|STBY_Pin|leftForwardIR_Pin|LeftDiagonalIROUT_Pin, GPIO_PIN_RESET);
+                          |IN4_Pin|STBY_Pin|leftForwardIROUT_Pin|LeftDiagonalIROUT_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, IN1_Pin|IN2_Pin|IN3_Pin, GPIO_PIN_RESET);
@@ -730,9 +731,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LeftIROUT_Pin rightDiagonal_OUT_Pin RightForwardlOUT_Pin RightIROUT_Pin
-                           leftForwardIR_Pin LeftDiagonalIROUT_Pin */
+                           leftForwardIROUT_Pin LeftDiagonalIROUT_Pin */
   GPIO_InitStruct.Pin = LeftIROUT_Pin|rightDiagonal_OUT_Pin|RightForwardlOUT_Pin|RightIROUT_Pin
-                          |leftForwardIR_Pin|LeftDiagonalIROUT_Pin;
+                          |leftForwardIROUT_Pin|LeftDiagonalIROUT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -758,6 +759,13 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    if (htim->Instance == TIM6)
+    {
+        IR_TimerCallback(htim);
+    }
+}
 
 /* USER CODE END 4 */
 

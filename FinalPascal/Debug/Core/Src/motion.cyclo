@@ -1,0 +1,5 @@
+../Core/Src/motion.c:25:6:Motion_Init	1
+../Core/Src/motion.c:55:13:Set_Left_Motor	4
+../Core/Src/motion.c:70:13:Set_Right_Motor	4
+../Core/Src/motion.c:88:6:Update_Encoders	1
+../Core/Src/motion.c:113:6:Run_Motion_Control_Loop	20
